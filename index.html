@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Linux Lab — học, tra cứu và luyện tập hơn 50 câu lệnh Linux bằng tiếng Việt.">
+  <meta name="theme-color" content="#0b1012">
+  <title>Linux Lab — Học lệnh Linux tương tác</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Bỏ qua đến nội dung chính</a>
+
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Điều hướng chính">
+      <a class="brand" href="#" data-view-link="home" aria-label="Linux Lab — Trang chủ">
+        <span class="brand-mark" aria-hidden="true">$_</span>
+        <span><strong>Linux Lab</strong><small>command playground</small></span>
+      </a>
+
+      <nav class="main-nav">
+        <button class="nav-item is-active" type="button" data-view="home">
+          <span class="nav-icon" aria-hidden="true">⌂</span><span>Tổng quan</span>
+        </button>
+        <button class="nav-item" type="button" data-view="library">
+          <span class="nav-icon" aria-hidden="true">⌘</span><span>Thư viện lệnh</span>
+          <span class="nav-count" id="command-count">56</span>
+        </button>
+        <button class="nav-item" type="button" data-view="practice">
+          <span class="nav-icon" aria-hidden="true">▣</span><span>Luyện tập</span>
+        </button>
+        <button class="nav-item" type="button" data-view="progress">
+          <span class="nav-icon" aria-hidden="true">◫</span><span>Tiến độ</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-progress">
+        <div class="section-kicker">TIẾN ĐỘ CỦA BẠN</div>
+        <div class="sidebar-progress-row"><span>Đã học</span><strong id="sidebar-progress-label">0/56</strong></div>
+        <div class="progress-track"><span id="sidebar-progress-bar"></span></div>
+        <button class="text-button" id="continue-learning" type="button">Tiếp tục học</button>
+      </div>
+
+      <div class="sidebar-tip">
+        <span class="tip-icon" aria-hidden="true">!</span>
+        <div><strong>Mẹo nhỏ</strong><p>Nhấn <kbd>/</kbd> để tìm nhanh một lệnh.</p></div>
+      </div>
+
+      <a class="source-link" href="https://www.digitalocean.com/community/tutorials/linux-commands" target="_blank" rel="noreferrer">Nguồn tham khảo: DigitalOcean</a>
+    </aside>
+
+    <div class="main-column">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobile-menu" type="button" aria-label="Mở menu" aria-expanded="false">☰</button>
+        <div class="topbar-title">
+          <span class="status-pill"><span></span> OFFLINE READY</span>
+        </div>
+        <div class="topbar-actions">
+          <button class="icon-button" id="theme-toggle" type="button" aria-label="Đổi giao diện sáng tối" title="Đổi giao diện">☼</button>
+          <div class="streak-badge" title="Chuỗi ngày học"><span aria-hidden="true">◆</span><strong id="streak-count">0</strong><small>ngày</small></div>
+        </div>
+      </header>
+
+      <main id="main-content" tabindex="-1">
+        <section class="view is-active" id="view-home" data-view-panel="home">
+          <div class="hero-grid">
+            <div class="hero-copy">
+              <div class="eyebrow">HỌC LINUX, THEO CÁCH THỰC HÀNH</div>
+              <h1>Làm chủ terminal.<br><span>Từng lệnh một.</span></h1>
+              <p>Khám phá hơn 50 câu lệnh thiết yếu, luyện tập trong terminal mô phỏng và theo dõi tiến bộ — hoàn toàn ngay trên trình duyệt.</p>
+              <div class="hero-actions">
+                <button class="primary-button" type="button" data-go="practice">Bắt đầu luyện tập</button>
+                <button class="secondary-button" type="button" data-go="library">Khám phá thư viện</button>
+              </div>
+              <div class="hero-meta">
+                <span><strong id="hero-command-total">56</strong> lệnh thiết yếu</span>
+                <span><strong>7</strong> chủ đề</span>
+                <span><strong>100%</strong> offline</span>
+              </div>
+            </div>
+
+            <div class="terminal-card hero-terminal" aria-label="Bản xem trước terminal">
+              <div class="terminal-bar">
+                <div class="window-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+                <span>learner@linuxlab:~</span>
+                <span class="terminal-badge">BASH</span>
+              </div>
+              <div class="terminal-preview">
+                <p><span class="prompt">learner@lab:~$</span> <span class="cmd">pwd</span></p>
+                <p class="output">/home/learner</p>
+                <p><span class="prompt">learner@lab:~$</span> <span class="cmd">ls -la</span></p>
+                <p class="output">drwxr-xr-x&nbsp; projects/</p>
+                <p class="output">-rw-r--r--&nbsp; notes.txt</p>
+                <p><span class="prompt">learner@lab:~$</span> <span class="cmd">cat notes.txt</span></p>
+                <p class="output accent">Keep learning. Keep building.</p>
+                <p><span class="prompt">learner@lab:~$</span> <span class="cursor-block" aria-hidden="true"></span></p>
+              </div>
+              <div class="terminal-caption"><span>Không ảnh hưởng máy thật</span><strong>Sandbox an toàn</strong></div>
+            </div>
+          </div>
+
+          <div class="dashboard-section">
+            <div class="section-heading">
+              <div><span class="section-kicker">LỘ TRÌNH ĐỀ XUẤT</span><h2>Học theo chủ đề</h2></div>
+              <button class="text-button" type="button" data-go="library">Xem tất cả lệnh</button>
+            </div>
+            <div class="track-grid" id="track-grid"></div>
+          </div>
+
+          <div class="dashboard-grid">
+            <section class="panel daily-challenge">
+              <div class="panel-heading"><div><span class="section-kicker">THỬ THÁCH NHANH</span><h2>Một phút với terminal</h2></div><span class="difficulty-tag">CƠ BẢN</span></div>
+              <p>Hiển thị cả tệp ẩn trong thư mục hiện tại dưới dạng danh sách chi tiết.</p>
+              <div class="code-prompt"><span>$</span><code>Nhập câu lệnh phù hợp...</code></div>
+              <button class="primary-button compact" type="button" data-open-practice="terminal">Giải thử thách</button>
+            </section>
+
+            <section class="panel activity-panel">
+              <div class="panel-heading"><div><span class="section-kicker">HOẠT ĐỘNG</span><h2>Nhịp học tuần này</h2></div></div>
+              <div class="activity-chart" id="activity-chart" aria-label="Biểu đồ hoạt động bảy ngày"></div>
+              <div class="activity-summary"><div><strong id="week-count">0</strong><span>hoạt động</span></div><div><strong id="best-score-mini">—</strong><span>điểm tốt nhất</span></div></div>
+            </section>
+          </div>
+        </section>
+
+        <section class="view" id="view-library" data-view-panel="library">
+          <div class="page-heading">
+            <div><span class="eyebrow">TRA CỨU NHANH</span><h1>Thư viện câu lệnh</h1><p>Tìm đúng lệnh, hiểu cú pháp và xem ví dụ thực tế.</p></div>
+            <div class="library-summary"><strong id="learned-library">0</strong><span>lệnh đã học</span></div>
+          </div>
+
+          <div class="library-toolbar">
+            <label class="search-box">
+              <span aria-hidden="true">⌕</span>
+              <input id="command-search" type="search" placeholder="Tìm theo tên, mô tả hoặc bí danh..." autocomplete="off">
+              <kbd>/</kbd>
+            </label>
+            <button class="filter-button" id="favorites-filter" type="button" aria-pressed="false">☆ Yêu thích</button>
+            <select id="level-filter" aria-label="Lọc theo mức độ">
+              <option value="all">Mọi cấp độ</option>
+              <option value="Cơ bản">Cơ bản</option>
+              <option value="Trung cấp">Trung cấp</option>
+              <option value="Nâng cao">Nâng cao</option>
+            </select>
+          </div>
+          <div class="category-filters" id="category-filters" aria-label="Lọc theo chủ đề"></div>
+          <div class="results-row"><span id="results-count">56 lệnh</span><button class="text-button" id="clear-filters" type="button">Xóa bộ lọc</button></div>
+          <div class="command-grid" id="command-grid"></div>
+          <div class="empty-state" id="library-empty" hidden><span>⌕</span><h2>Không tìm thấy lệnh</h2><p>Thử từ khóa hoặc bộ lọc khác.</p></div>
+        </section>
+
+        <section class="view" id="view-practice" data-view-panel="practice">
+          <div class="page-heading practice-heading">
+            <div><span class="eyebrow">HỌC BẰNG THỰC HÀNH</span><h1>Khu luyện tập</h1><p>Chọn cách học phù hợp với bạn hôm nay.</p></div>
+            <div class="practice-score"><span>Điểm tốt nhất</span><strong id="best-score">—</strong></div>
+          </div>
+
+          <div class="practice-tabs" role="tablist" aria-label="Chế độ luyện tập">
+            <button type="button" role="tab" aria-selected="true" data-practice-tab="terminal"><span>$_</span><strong>Terminal</strong><small>Gõ và thử lệnh</small></button>
+            <button type="button" role="tab" aria-selected="false" data-practice-tab="flashcards"><span>◫</span><strong>Flashcard</strong><small>Ghi nhớ nhanh</small></button>
+            <button type="button" role="tab" aria-selected="false" data-practice-tab="quiz"><span>✓</span><strong>Quiz</strong><small>Kiểm tra kiến thức</small></button>
+          </div>
+
+          <div class="practice-panel is-active" data-practice-panel="terminal">
+            <div class="terminal-layout">
+              <section class="mission-card">
+                <div class="mission-top"><span class="mission-number" id="mission-number">01</span><span class="difficulty-tag">HƯỚNG DẪN</span></div>
+                <h2 id="mission-title">Khám phá thư mục</h2>
+                <p id="mission-description">Dùng lệnh phù hợp để xem vị trí hiện tại.</p>
+                <div class="mission-goal"><span>MỤC TIÊU</span><code id="mission-goal">pwd</code></div>
+                <label class="mission-command-picker" for="terminal-command-select">
+                  <span>CHỌN LỆNH ĐỂ LUYỆN</span>
+                  <select id="terminal-command-select" aria-label="Chọn lệnh để luyện trong terminal"></select>
+                </label>
+                <div class="mission-feedback" id="mission-feedback" aria-live="polite">Nhập lệnh trong terminal để bắt đầu.</div>
+                <div class="mission-actions">
+                  <button class="secondary-button compact" id="mission-hint" type="button">Xem gợi ý</button>
+                  <button class="text-button" id="mission-skip" type="button">Bỏ qua</button>
+                </div>
+                <div class="mission-progress"><span id="mission-progress-label">1 / 6</span><div class="progress-track"><span id="mission-progress-bar"></span></div></div>
+              </section>
+
+              <section class="terminal-card live-terminal">
+                <div class="terminal-bar">
+                  <div class="window-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+                  <span>Linux Lab Sandbox</span>
+                  <button id="terminal-reset" type="button">Đặt lại</button>
+                </div>
+                <div class="terminal-output" id="terminal-output" aria-live="polite" aria-label="Đầu ra terminal"></div>
+                <form class="terminal-input-row" id="terminal-form">
+                  <label for="terminal-input" id="terminal-prompt">learner@lab:~$</label>
+                  <input id="terminal-input" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Nhập câu lệnh Linux" placeholder="Nhập một lệnh...">
+                </form>
+              </section>
+            </div>
+            <p class="sandbox-note"><strong>Sandbox mô phỏng:</strong> lệnh chỉ tác động lên hệ thống tệp ảo trong trang, không bao giờ chạy trên máy của bạn.</p>
+          </div>
+
+          <div class="practice-panel" data-practice-panel="flashcards">
+            <div class="flashcard-shell">
+              <div class="flashcard-controls"><span id="flashcard-counter">1 / 56</span><label>Chủ đề <select id="flashcard-category"></select></label></div>
+              <button class="flashcard" id="flashcard" type="button" aria-label="Lật thẻ">
+                <span class="flashcard-side flashcard-front"><small>LỆNH NÀY DÙNG ĐỂ LÀM GÌ?</small><strong id="flashcard-command">ls</strong><span>Nhấn để lật thẻ</span></span>
+                <span class="flashcard-side flashcard-back"><small>GIẢI THÍCH</small><strong id="flashcard-summary"></strong><code id="flashcard-example"></code><span>Nhấn để quay lại</span></span>
+              </button>
+              <div class="flashcard-actions"><button class="secondary-button" id="flashcard-prev" type="button">Thẻ trước</button><button class="primary-button" id="flashcard-know" type="button">Đã hiểu</button><button class="secondary-button" id="flashcard-next" type="button">Thẻ tiếp</button><button class="terminal-practice-button" id="flashcard-terminal" type="button">$_ Luyện lệnh này trong terminal</button></div>
+            </div>
+          </div>
+
+          <div class="practice-panel" data-practice-panel="quiz">
+            <div class="quiz-shell" id="quiz-shell">
+              <div class="quiz-start" id="quiz-start">
+                <span class="quiz-graphic" aria-hidden="true">?</span>
+                <h2>Kiểm tra phản xạ terminal</h2>
+                <p>10 câu hỏi được tạo từ thư viện: chọn lệnh, đọc cú pháp và nhận biết tình huống.</p>
+                <div class="quiz-features"><span>10 câu</span><span>3 dạng bài</span><span>Giải thích tức thì</span></div>
+                <button class="primary-button" id="quiz-begin" type="button">Bắt đầu quiz</button>
+              </div>
+              <div class="quiz-active" id="quiz-active" hidden>
+                <div class="quiz-status"><span id="quiz-progress">Câu 1 / 10</span><strong id="quiz-score">0 điểm</strong></div>
+                <div class="progress-track quiz-progress-track"><span id="quiz-progress-bar"></span></div>
+                <div class="quiz-card">
+                  <span class="section-kicker" id="quiz-type">CHỌN CÂU LỆNH</span>
+                  <h2 id="quiz-question"></h2>
+                  <div class="quiz-options" id="quiz-options"></div>
+                  <div class="quiz-explanation" id="quiz-explanation" aria-live="polite" hidden></div>
+                </div>
+                <button class="primary-button quiz-next" id="quiz-next" type="button" hidden>Câu tiếp theo</button>
+              </div>
+              <div class="quiz-result" id="quiz-result" hidden>
+                <span class="result-ring"><strong id="quiz-final-score">0</strong><small>/100</small></span>
+                <h2 id="quiz-result-title">Hoàn thành!</h2>
+                <p id="quiz-result-copy"></p>
+                <button class="primary-button" id="quiz-restart" type="button">Làm lại quiz</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="view" id="view-progress" data-view-panel="progress">
+          <div class="page-heading">
+            <div><span class="eyebrow">HÀNH TRÌNH CỦA BẠN</span><h1>Tiến độ học tập</h1><p>Một bức tranh rõ ràng về những gì bạn đã làm chủ.</p></div>
+            <button class="danger-button" id="reset-progress" type="button">Xóa tiến độ</button>
+          </div>
+          <div class="stats-grid">
+            <article><span>ĐÃ HỌC</span><strong id="stat-learned">0</strong><small>trên 56 lệnh</small></article>
+            <article><span>ĐIỂM TỐT NHẤT</span><strong id="stat-score">—</strong><small>trong bài quiz</small></article>
+            <article><span>CHUỖI HỌC</span><strong id="stat-streak">0</strong><small>ngày liên tiếp</small></article>
+            <article><span>YÊU THÍCH</span><strong id="stat-favorites">0</strong><small>lệnh đã lưu</small></article>
+          </div>
+          <section class="panel progress-overview">
+            <div class="panel-heading"><div><span class="section-kicker">THEO CHỦ ĐỀ</span><h2>Mức độ hoàn thành</h2></div></div>
+            <div id="category-progress-list"></div>
+          </section>
+        </section>
+      </main>
+
+      <footer>
+        <span>Linux Lab — học bằng cách làm.</span>
+        <span>Nội dung tham khảo và diễn giải từ <a href="https://www.digitalocean.com/community/tutorials/linux-commands" target="_blank" rel="noreferrer">DigitalOcean Community</a>.</span>
+      </footer>
+    </div>
+  </div>
+
+  <dialog class="command-dialog" id="command-dialog">
+    <div class="dialog-head">
+      <div><span class="category-label" id="dialog-category"></span><h2><code id="dialog-command"></code></h2></div>
+      <button class="icon-button" id="dialog-close" type="button" aria-label="Đóng chi tiết">×</button>
+    </div>
+    <p class="dialog-summary" id="dialog-summary"></p>
+    <div class="dialog-section"><h3>Cú pháp</h3><div class="code-block"><code id="dialog-syntax"></code><button type="button" data-copy-target="dialog-syntax">Sao chép</button></div></div>
+    <div class="dialog-section"><h3>Ví dụ thực tế</h3><div class="code-block"><code id="dialog-example"></code><button type="button" data-copy-target="dialog-example">Sao chép</button></div><pre id="dialog-output"></pre></div>
+    <div class="dialog-section" id="dialog-options-section"><h3>Tùy chọn thường dùng</h3><ul id="dialog-options"></ul></div>
+    <div class="safety-callout" id="dialog-safety" hidden><strong>Lưu ý an toàn</strong><p></p></div>
+    <div class="dialog-actions">
+      <button class="favorite-action" id="dialog-favorite" type="button">☆ Thêm vào yêu thích</button>
+      <div class="dialog-practice-actions"><button class="secondary-button compact" id="dialog-flashcard" type="button">Xem flashcard</button><button class="secondary-button compact" id="dialog-terminal" type="button">Luyện terminal</button><button class="primary-button compact" id="dialog-learned" type="button">Đánh dấu đã học</button></div>
+    </div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="assets/app.js"></script>
+</body>
+</html>
